@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CBNU eligibility check | KoUni</title>
+<meta name="description" content="Answer a few questions and see whether you meet the requirements to apply to Chungbuk National University for Spring 2027.">
+<style>
+  /* Fonts served from ./fonts/ (same host), latin subset, woff2, from @fontsource (SIL Open Font License 1.1). See SOURCES.txt.
+     Bricolage Grotesque: @fontsource-variable/bricolage-grotesque opsz file, used at weight 700 only (optical size 12-96).
+     Figtree: @fontsource/figtree 400, 500 and 600. */
+  @font-face { font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+  @font-face { font-family: "Figtree"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/figtree-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+  @font-face { font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/figtree-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+  @font-face { font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/figtree-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+  :root {
+    --ink: #17233b;
+    --ink-soft: #4b5873;
+    --paper: #f6f8fb;
+    --surface: #ffffff;
+    --line: #d3dbe8;
+    --cobalt: #1f4fd8;
+    --cobalt-deep: #163aa5;
+    --ok: #0b7a5c;
+    --ok-bg: #e4f4ee;
+    --warn: #8f5300;
+    --warn-bg: #fff1d6;
+    --bad: #b3261e;
+    --bad-bg: #fbe5e3;
+    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: light; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--body);
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  .brand { font: 700 1.25rem/1 var(--display); letter-spacing: -0.01em; color: var(--cobalt); margin: 0 0 2.5rem; }
+  h1 {
+    font: 700 clamp(2rem, 7vw, 3rem)/1.05 var(--display);
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    max-width: 18ch;
+  }
+  .lede { max-width: 56ch; margin: 0 0 0.75rem; color: var(--ink-soft); }
+  .privacy { max-width: 56ch; color: var(--ink-soft); margin: 0 0 2.5rem; }
+
+  fieldset { border: 0; border-top: 2px solid var(--ink); padding: 1.25rem 0 0.5rem; margin: 0 0 2rem; min-width: 0; }
+  legend { font: 700 1.375rem/1.2 var(--display); padding: 0 0.75rem 0 0; margin-left: 0; }
+  .hint { color: var(--ink-soft); font-size: 0.9375rem; margin: 0 0 1rem; max-width: 56ch; }
+  .grid { display: grid; gap: 1rem; align-items: end; }
+  @media (min-width: 36rem) { .grid.two { grid-template-columns: 1fr 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+  .grid .field { margin-bottom: 0; }
+  label, .label { font-weight: 600; font-size: 0.9375rem; }
+  .opt { font-weight: 400; color: var(--ink-soft); }
+  input[type=text], input[type=email], input[type=tel], input[type=number], input[type=date], select {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    padding: 0.7rem 0.8rem;
+    min-height: 2.9rem;
+  }
+  select { appearance: auto; }
+  input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--cobalt);
+    outline-offset: 2px;
+  }
+  input[aria-invalid=true], select[aria-invalid=true] { border-color: var(--bad); }
+  .err { color: var(--bad); font-size: 0.875rem; font-weight: 500; min-height: 0; }
+  .check { display: flex; gap: 0.7rem; align-items: flex-start; font-weight: 400; font-size: 1rem; padding: 0.4rem 0; cursor: pointer; }
+  .check input { width: 1.25rem; height: 1.25rem; margin: 0.2rem 0 0; flex: none; accent-color: var(--cobalt); }
+  .msgbox { background: var(--surface); border: 1.5px solid var(--line); border-left: 6px solid var(--cobalt); padding: 0.8rem 1rem; font-weight: 600; font-size: 1.125rem; max-width: 56ch; margin: 0.75rem 0 1rem; }
+  .msgarea { display: block; width: 100%; max-width: 40rem; min-height: 17rem; font: inherit; font-size: 1rem; line-height: 1.55; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-left: 6px solid var(--cobalt); border-radius: 6px; padding: 0.9rem 1rem; margin: 0.75rem 0 1rem; resize: vertical; }
+  .check small { display: block; color: var(--ink-soft); font-size: 0.875rem; margin-top: 0.1rem; }
+  .check strong { font-weight: 600; }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn); padding: 0.7rem 0.9rem; margin: 0 0 1rem; font-size: 0.9375rem; max-width: 56ch; }
+  .need { background: var(--surface); border-left: 4px solid var(--cobalt); padding: 0.7rem 0.9rem; margin: 0 0 1rem; font-size: 0.9375rem; }
+  [hidden] { display: none !important; }
+
+  .btn {
+    font: 600 1rem/1 var(--body);
+    background: var(--cobalt);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    min-height: 3rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn:hover { background: var(--cobalt-deep); }
+  .btn.ghost { background: transparent; color: var(--cobalt); border: 1.5px solid var(--cobalt); }
+  .btn.ghost:hover { background: #e9eefc; }
+  .submit-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+  #result { margin-top: 3rem; scroll-margin-top: 1rem; }
+  #result:focus { outline: none; }
+  .verdict { border-left: 8px solid var(--ink); padding: 1.25rem 1.25rem 1.25rem 1.25rem; background: var(--surface); }
+  .verdict[data-state=ok] { border-color: var(--ok); background: var(--ok-bg); }
+  .verdict[data-state=action] { border-color: var(--warn); background: var(--warn-bg); }
+  .verdict[data-state=fail] { border-color: var(--bad); background: var(--bad-bg); }
+  .verdict h2 { font: 700 clamp(1.6rem, 5vw, 2.2rem)/1.1 var(--display); letter-spacing: -0.015em; margin: 0 0 0.5rem; }
+  .verdict p { margin: 0; max-width: 56ch; }
+  h3.sub { font: 700 1.25rem/1.2 var(--display); margin: 2rem 0 0.75rem; }
+
+  .ledger { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .ledger li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.25rem 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .ledger .what { font-weight: 600; }
+  .ledger .status { display: inline-block; font-weight: 600; font-size: 0.875rem; padding: 0.15rem 0.55rem; border-radius: 4px; margin-bottom: 0.35rem; }
+  .status.ok { background: var(--ok-bg); color: var(--ok); }
+  .status.action { background: var(--warn-bg); color: var(--warn); }
+  .status.fail { background: var(--bad-bg); color: var(--bad); }
+  .status.info { background: #e6ecf8; color: var(--cobalt-deep); }
+  .ledger p { margin: 0.1rem 0 0; max-width: 60ch; }
+  .ledger .note { color: var(--ink-soft); font-size: 0.9375rem; }
+  @media (max-width: 34rem) { .ledger li { grid-template-columns: 1fr; } }
+
+  .steps { margin: 0; padding-left: 1.25rem; max-width: 60ch; }
+  .steps li { margin-bottom: 0.5rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .fine { color: var(--ink-soft); font-size: 0.875rem; max-width: 60ch; margin-top: 2rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  @media print {
+    body { background: #fff; }
+    form, .actions, .brand { display: none !important; }
+    .msgarea { border: 1px solid #999; }
+    #result { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="brand">KoUni</p>
+  <h1>Check if you can apply to CBNU for Spring 2027</h1>
+  <p class="lede">Answer a few questions about your studies, language and funds. You will see straight away what you already meet and what is still missing. It takes about three minutes.</p>
+  <p class="privacy">Your answers are shared with KoUni. Please do not type passport or ID numbers here.</p>
+
+  <form id="f" novalidate>
+    <fieldset>
+      <legend>About you</legend>
+      <div class="grid two">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" autocomplete="name" required>
+          <span class="err" id="name-err"></span>
+        </div>
+        <div class="field">
+          <label for="country">Country of citizenship</label>
+          <input id="country" type="text" autocomplete="country-name" required>
+          <span class="err" id="country-err"></span>
+        </div>
+        <div class="field">
+          <label for="dob">Date of birth</label>
+          <input id="dob" type="date" autocomplete="bday" min="1950-01-01" required>
+          <span class="err" id="dob-err"></span>
+        </div>
+        <div class="field">
+          <label for="phone">WhatsApp or phone number</label>
+          <input id="phone" type="tel" autocomplete="tel" placeholder="With country code" required>
+          <span class="err" id="phone-err"></span>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="opt">(optional)</span></label>
+          <input id="email" type="email" autocomplete="email">
+        </div>
+      </div>
+      <div class="field" style="margin-top:1rem">
+        <label for="inkorea">Are you in Korea now on a valid visa?</label>
+        <select id="inkorea" required>
+          <option value="no" selected>No, I am applying from outside Korea</option>
+          <option value="yes">Yes, I am in Korea with a visa</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>What you want to study</legend>
+      <div class="grid two">
+        <div class="field">
+          <label for="level">Program level</label>
+          <select id="level" required>
+            <option value="">Choose one</option>
+            <option value="bachelor">Bachelor's</option>
+            <option value="master">Master's</option>
+          </select>
+          <span class="err" id="level-err"></span>
+        </div>
+        <div class="field">
+          <label for="edu">Your highest education so far</label>
+          <select id="edu" required>
+            <option value="">Choose one</option>
+            <option value="hs_final">High school, final year (graduating before March 2027)</option>
+            <option value="hs">High school graduate</option>
+            <option value="assoc">Associate degree or college diploma</option>
+            <option value="bach_final">Bachelor's, final year (graduating before March 2027)</option>
+            <option value="bach">Bachelor's degree</option>
+            <option value="mast_final">Master's, final year (graduating before March 2027)</option>
+            <option value="mast">Master's degree</option>
+            <option value="none">None of these</option>
+          </select>
+          <span class="err" id="edu-err"></span>
+        </div>
+      </div>
+      <div class="field" style="margin-top:1rem">
+        <label for="degree">Name of your most recent degree <span class="opt">(optional)</span></label>
+        <input id="degree" type="text" placeholder="For example: BS Computer Science">
+      </div>
+      <div class="field">
+        <label for="program">Desired department</label>
+        <select id="program" required>
+          <option value="">Choose one</option>
+          <option value="intl_edu">Global Education (School of International Studies)</option>
+          <option value="csc">Convergence Software (School of International Studies)</option>
+        </select>
+        <span class="err" id="program-err"></span>
+      </div>
+      <p class="hint" style="margin-top:1rem">This check is for the Spring 2027 intake at Chungbuk National University (CBNU), for Bachelor's and Master's applicants in these two departments.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Language</legend>
+      <p class="hint">CBNU needs one of the following. Fill in everything you have; we use the best one.</p>
+      <p class="warn"><strong>Not accepted:</strong> a language certificate or letter from your previous school, college or university. Only an official test result counts, such as TOPIK, TOEFL, IELTS or TEPS.</p>
+      <div class="grid two">
+        <div class="field">
+          <label for="topik">TOPIK level</label>
+          <select id="topik">
+            <option value="0">No TOPIK result</option>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4</option>
+            <option value="5">Level 5</option>
+            <option value="6">Level 6</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="klp">CBNU Korean Language Program (KLP) completed</label>
+          <select id="klp">
+            <option value="0">Not completed any level</option>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4 or higher</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="engtest">English test</label>
+          <select id="engtest">
+            <option value="">No English test</option>
+            <option value="ibt">TOEFL iBT</option>
+            <option value="cbt">TOEFL CBT</option>
+            <option value="pbt">TOEFL paper-based</option>
+            <option value="ielts">IELTS</option>
+            <option value="teps">TEPS</option>
+            <option value="nteps">New TEPS</option>
+            <option value="cefr">CEFR level (official test report)</option>
+          </select>
+        </div>
+        <div class="field" id="engscore-wrap" hidden>
+          <label for="engscore">Your score</label>
+          <input id="engscore" type="number" step="0.5" min="0" inputmode="decimal">
+          <select id="engcefr" hidden>
+            <option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option>
+            <option value="B2">B2</option><option value="C1">C1</option><option value="C2">C2</option>
+          </select>
+          <span class="err" id="engscore-err"></span>
+        </div>
+      </div>
+      <label class="check" style="margin-top:0.75rem">
+        <input id="plantopik" type="checkbox">
+        <span>I have no result yet, but I can sit the next TOPIK that CBNU names</span>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Funds</legend>
+      <p class="need" id="need">Choose a program level above to see the amount you need to show.</p>
+      <div class="grid two">
+        <div class="field">
+          <label for="holder">Whose name is the bank account in?</label>
+          <select id="holder" required>
+            <option value="">Choose one</option>
+            <option value="me">My own name</option>
+            <option value="parents">My parents' name</option>
+            <option value="scholar">I have an institutional or embassy scholarship</option>
+            <option value="other">Someone else's name</option>
+            <option value="none">I do not have the funds ready yet</option>
+          </select>
+          <span class="err" id="holder-err"></span>
+        </div>
+        <div class="field" id="amount-wrap">
+          <label for="amount">Balance in Korean won (KRW)</label>
+          <input id="amount" type="number" min="0" step="1000" inputmode="numeric" placeholder="Convert at today's rate">
+          <span class="err" id="amount-err"></span>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Documents you already have</legend>
+      <p class="hint">Tick each statement that is true for you today. This does not change your eligibility. It tells us how soon you can apply. The first two change to match the education you chose above.</p>
+      <label class="check"><input type="checkbox" name="doc" value="passport"><span><strong>Passport</strong><small>I have a valid passport.</small></span></label>
+      <label class="check"><input type="checkbox" name="doc" value="cert"><span><strong id="cert-t">Education certificate</strong><small id="cert-d">Choose your highest education above to see exactly what is needed.</small></span></label>
+      <label class="check"><input type="checkbox" name="doc" value="transcript"><span><strong id="tr-t">Transcript</strong><small id="tr-d">Choose your highest education above to see exactly what is needed.</small></span></label>
+      <label class="check"><input type="checkbox" name="doc" value="apostille"><span><strong>Attested and apostilled by MOFA</strong><small>My certificate and transcript are attested and apostilled by MOFA, or carry a confirmation from the Korean embassy. An apostille is an official stamp from your country's authorities that makes a document valid abroad. A photocopy or notarised copy of an apostilled document is not accepted.</small></span></label>
+      <label class="check"><input type="checkbox" name="doc" value="family"><span><strong>Family relationship document</strong><small>I have an official document showing me and both my parents and that we are related, issued in the last 3 months. Examples: Family Registration Certificate, Pakistan Family Certificate, Family Census, Kartu Keluarga, Ho Khau.</small></span></label>
+      <label class="check"><input type="checkbox" name="doc" value="langcert"><span><strong>Official language test report</strong><small>I have a TOPIK result, or an English test report such as IELTS, TOEFL or TEPS. A certificate from my previous college or university does not count.</small></span></label>
+      <label class="check"><input type="checkbox" name="doc" value="bank"><span><strong>Bank balance certificate</strong><small>I have a certificate from the bank, in my own or my parents' name, showing at least the amount required for my program.</small></span></label>
+    </fieldset>
+
+    <div class="submit-row">
+      <button class="btn" type="submit">Check my eligibility</button>
+      <span class="err" id="form-err" role="alert"></span>
+    </div>
+  </form>
+
+  <section id="result" tabindex="-1" aria-live="polite" hidden></section>
+</main>
+
+<script>
+(function () {
+  var CONTACT = { instagram: "_ko.uni_" };
+  var SAVE = { url: "" };
+  var PAGE_VERSION = "2026-11-22";
+
+  var KST = "+09:00";
+  var D = {
+    r1Online: new Date("2026-10-30T18:00:00" + KST),
+    r1Originals: new Date("2026-11-06T18:00:00" + KST),
+    r2Open: new Date("2026-11-23T00:00:00" + KST),
+    r2: new Date("2026-12-11T18:00:00" + KST)
+  };
+  var NEED = { bachelor: 16000000, master: 16000000, phd: 16000000 };
+  var LEVEL_NAME = { bachelor: "Bachelor's", master: "Master's", phd: "PhD" };
+  var EDU = {
+    hs_final: { done: 0, pending: 1, label: "High school, final year" },
+    hs: { done: 1, label: "High school graduate" },
+    assoc: { done: 2, label: "Associate degree or college diploma" },
+    bach_final: { done: 1, pending: 3, label: "Bachelor's, final year" },
+    bach: { done: 3, label: "Bachelor's degree" },
+    mast_final: { done: 3, pending: 4, label: "Master's, final year" },
+    mast: { done: 4, label: "Master's degree" },
+    none: { done: 0, label: "None of the listed options" }
+  };
+  var REQ_EDU = { bachelor: 1, master: 3, phd: 4 };
+  var REQ_EDU_TEXT = { bachelor: "a high school certificate", master: "a bachelor's degree", phd: "a master's degree" };
+  var ENG = {
+    ibt:   { min: 71,  label: "TOEFL iBT" },
+    cbt:   { min: 197, label: "TOEFL CBT" },
+    pbt:   { min: 530, label: "TOEFL paper-based" },
+    ielts: { min: 5.5, label: "IELTS" },
+    teps:  { min: 600, label: "TEPS" },
+    nteps: { min: 326, label: "New TEPS" }
+  };
+  var DOCS = [
+    { k: "passport", t: "Passport" },
+    { k: "cert", t: "Education certificate" },
+    { k: "transcript", t: "Transcript" },
+    { k: "apostille", t: "MOFA attestation and apostille on the certificate and transcript" },
+    { k: "family", t: "Family relationship document" },
+    { k: "langcert", t: "Official language test report" },
+    { k: "bank", t: "Bank balance certificate" }
+  ];
+  // Plain-language wording for the two documents that depend on the education chosen.
+  var DOC_TEXT = {
+    hs_final: {
+      cert: ["Expected-graduation certificate from my school", "I am still in my final year. I have a letter or certificate from my school saying I am expected to graduate, issued in the last 6 months. I will hand in the final graduation certificate before the semester starts."],
+      tr: ["School transcript so far", "I have an official transcript of my marks so far, issued in the last 6 months."]
+    },
+    hs: {
+      cert: ["High school graduation certificate", "I have already graduated and I have the certificate, issued in the last 6 months."],
+      tr: ["High school transcript", "I have the official transcript showing all my marks, issued in the last 6 months."]
+    },
+    assoc: {
+      cert: ["Associate degree or college diploma certificate", "I have already graduated and I have the certificate, issued in the last 6 months."],
+      tr: ["College transcript", "I have the official transcript showing all my marks, issued in the last 6 months."]
+    },
+    bach_final: {
+      cert: ["Expected-graduation certificate from my university", "I am still in my final year. I have a letter or certificate from my university saying I am expected to graduate, issued in the last 6 months. I will hand in the final degree certificate before the semester starts."],
+      tr: ["University transcript so far", "I have an official transcript of my marks so far, issued in the last 6 months."]
+    },
+    bach: {
+      cert: ["Bachelor's degree certificate", "I have already graduated and I have the degree certificate, issued in the last 6 months."],
+      tr: ["Bachelor's transcript", "I have the official transcript showing all my marks, issued in the last 6 months."]
+    },
+    mast_final: {
+      cert: ["Expected-graduation certificate from my university", "I am still in my final year. I have a letter or certificate from my university saying I am expected to graduate, issued in the last 6 months. I will hand in the final degree certificate before the semester starts."],
+      tr: ["University transcript so far", "I have an official transcript of my marks so far, issued in the last 6 months."]
+    },
+    mast: {
+      cert: ["Master's degree certificate", "I have already graduated and I have the degree certificate, issued in the last 6 months."],
+      tr: ["Master's transcript", "I have the official transcript showing all my marks, issued in the last 6 months."]
+    },
+    none: {
+      cert: ["Education certificate", "I have a certificate for the highest level of education I completed, issued in the last 6 months."],
+      tr: ["Transcript", "I have the official transcript for that education, issued in the last 6 months."]
+    }
+  };
+  function updateDocText() {
+    var t = DOC_TEXT[$("edu").value];
+    if (!t) return;
+    $("cert-t").textContent = t.cert[0]; $("cert-d").textContent = t.cert[1];
+    $("tr-t").textContent = t.tr[0]; $("tr-d").textContent = t.tr[1];
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $("f");
+  var lastSummary = "";
+
+  var DEPT = { intl_edu: "Global Education", csc: "Convergence Software" };
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function fmtDob(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || "");
+    return m ? parseInt(m[3], 10) + " " + MONTHS[parseInt(m[2], 10) - 1] + " " + m[1] : (v || "");
+  }
+  function languageLine(a) {
+    var parts = [], topik = parseInt(a.topik, 10), klp = parseInt(a.klp, 10);
+    if (topik > 0) parts.push("TOPIK level " + topik);
+    if (klp > 0) parts.push("CBNU KLP level " + (klp === 4 ? "4 or higher" : klp) + " completed");
+    if (a.engtest === "cefr") parts.push("CEFR " + a.cefr);
+    else if (a.engtest && a.engscore !== "") parts.push(ENG[a.engtest].label + " " + a.engscore);
+    if (!parts.length && a.plantopik) return "No result yet. I can sit the next TOPIK CBNU names.";
+    return parts.length ? "Yes. " + parts.join("; ") : "No";
+  }
+  function buildMessage(a, first) {
+    var degree = a.degree ? a.degree + " (" + EDU[a.edu].label + ")" : EDU[a.edu].label;
+    var enough = a.holder === "scholar" ? "No, I have a scholarship (sponsor confirmation letter)"
+      : (((a.holder === "me" || a.holder === "parents") && parseFloat(a.amount) >= NEED[a.level]) ? "Yes" : "No");
+    return [
+      first, "",
+      "Name: " + a.name,
+      "Citizenship: " + a.country,
+      "Date of birth: " + fmtDob(a.dob),
+      "Contact number: " + a.phone,
+      "Most recent degree: " + degree,
+      "Desired program: " + (a.level === "master" ? "Masters" : "Bachelors"),
+      "Desired Department: " + DEPT[a.program],
+      "Are your documents attested and apostilled by MOFA? " + ((a.docs || []).indexOf("apostille") > -1 ? "Yes" : "No"),
+      "Do you have enough amount in your bank? " + enough,
+      "Do you have IELTS/TOPIK? Score? " + languageLine(a)
+    ].join("\n");
+  }
+
+  function won(n) { return "KRW " + Math.round(n).toLocaleString("en-US"); }
+  function days(ms) { return Math.max(1, Math.ceil(ms / 86400000)); }
+  function dateText(d) {
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Seoul" });
+  }
+
+  // Show the amount needed as soon as a level is chosen.
+  $("level").addEventListener("change", function () {
+    var v = $("level").value;
+    $("need").textContent = v
+      ? "For a " + LEVEL_NAME[v] + " program you need to show at least " + won(NEED[v]) + " in the bank."
+      : "Choose a program level above to see the amount you need to show.";
+  });
+  $("edu").addEventListener("change", updateDocText);
+  // Show the right score input for the English test chosen.
+  $("engtest").addEventListener("change", function () {
+    var v = $("engtest").value;
+    $("engscore-wrap").hidden = !v;
+    $("engcefr").hidden = v !== "cefr";
+    $("engscore").hidden = v === "cefr";
+    if (v && v !== "cefr") $("engscore").setAttribute("placeholder", "Minimum " + ENG[v].min);
+  });
+  // Hide the balance when it does not apply.
+  $("holder").addEventListener("change", function () {
+    var v = $("holder").value;
+    $("amount-wrap").hidden = (v === "scholar" || v === "none" || v === "other");
+  });
+
+  function setErr(id, msg) {
+    var el = $(id + "-err");
+    var input = $(id);
+    if (el) el.textContent = msg || "";
+    if (input) { if (msg) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid"); }
+  }
+
+  function validate() {
+    var ok = true, first = null;
+    function need(id, cond, msg) {
+      setErr(id, cond ? "" : msg);
+      if (!cond) { ok = false; if (!first) first = $(id); }
+    }
+    need("name", $("name").value.trim().length > 1, "Enter your full name.");
+    need("country", $("country").value.trim().length > 1, "Enter your country of citizenship.");
+    need("phone", $("phone").value.replace(/\D/g, "").length >= 7, "Enter a phone or WhatsApp number with country code.");
+    var dobOk = /^\d{4}-\d{2}-\d{2}$/.test($("dob").value) && $("dob").value >= "1950-01-01" && $("dob").value <= new Date().toISOString().slice(0, 10);
+    need("dob", dobOk, "Enter your date of birth.");
+    need("program", !!$("program").value, "Choose a department.");
+    need("level", !!$("level").value, "Choose a program level.");
+    need("edu", !!$("edu").value, "Choose your highest education.");
+    need("holder", !!$("holder").value, "Choose whose name the account is in.");
+    var eng = $("engtest").value;
+    if (eng && eng !== "cefr") {
+      need("engscore", $("engscore").value !== "" && !isNaN(parseFloat($("engscore").value)), "Enter your score.");
+    } else { setErr("engscore", ""); }
+    var h = $("holder").value;
+    if (h === "me" || h === "parents") {
+      need("amount", $("amount").value !== "" && parseFloat($("amount").value) >= 0, "Enter the balance in KRW, even if it is an estimate.");
+    } else { setErr("amount", ""); }
+    $("form-err").textContent = ok ? "" : "Some answers are missing. Check the fields marked in red.";
+    if (first) first.focus();
+    return ok;
+  }
+
+  function evaluate(a) {
+    var rows = [];
+
+    // Education
+    var e = EDU[a.edu], req = REQ_EDU[a.level], st, detail;
+    if (e.done >= req) {
+      st = "ok"; detail = "You have " + REQ_EDU_TEXT[a.level] + " or higher, which is what a " + LEVEL_NAME[a.level] + " program asks for.";
+    } else if (e.pending && e.pending >= req) {
+      st = "action"; detail = "You are in your final year. CBNU will cancel the admission if you do not hand in the final graduation certificate and transcript before the first semester begins.";
+    } else {
+      st = "fail"; detail = "A " + LEVEL_NAME[a.level] + " program needs " + REQ_EDU_TEXT[a.level] + ", and you have not reached that yet.";
+    }
+    var eduNote = a.level === "bachelor" ? "" : "CBNU requires a Bachelor's degree for a Master's program: one you already hold, or one you will receive before the first semester begins on 2 March 2027.";
+    rows.push({ key: "Education", st: st, detail: detail, note: eduNote, action: st === "action" ? "Get your final graduation certificate and transcript before the semester starts." : (st === "fail" ? "Finish the qualification the program needs, or choose a program level you qualify for." : "") });
+
+    // Language
+    var topik = parseInt(a.topik, 10), klp = parseInt(a.klp, 10);
+    var met = [], cond = [];
+    if (topik >= 3) met.push("TOPIK level " + topik);
+    if (klp >= 4) met.push("KLP level 4 or higher");
+    if (a.engtest === "cefr") {
+      if (["B2", "C1", "C2"].indexOf(a.cefr) > -1) met.push("CEFR " + a.cefr);
+    } else if (a.engtest) {
+      var s = parseFloat(a.engscore);
+      if (!isNaN(s) && s >= ENG[a.engtest].min) met.push(ENG[a.engtest].label + " " + s);
+    }
+    if (topik === 2) cond.push("TOPIK level 2: you must complete 300 hours of the CBNU Korean Language Program after admission.");
+    if (klp === 3) cond.push("KLP level 3: you must complete 300 hours of KLP after admission.");
+    if (a.plantopik) cond.push("No TOPIK result yet: you must pass the sitting CBNU names and hand in the certificate by its cut-off.");
+    var lang = { key: "Language", note: "", action: "" };
+    if (met.length) {
+      lang.st = "ok"; lang.detail = "You meet the language requirement with " + met[0] + ".";
+      if (klp >= 3) lang.note = "A Spring applicant using KLP must be enrolled in the KLP Winter semester, even if Level 3 or 4 is already done.";
+    } else if (cond.length) {
+      lang.st = "action"; lang.detail = cond[0];
+      lang.action = "Plan the language step: " + cond[0];
+    } else {
+      lang.st = "fail";
+      lang.detail = "None of your language results reaches CBNU's minimum yet. CBNU accepts TOPIK 3, KLP level 4, TOEFL iBT 71, IELTS 5.5, CEFR B2 or TEPS 600 (New TEPS 326). A certificate from your previous school, college or university is not accepted.";
+      lang.action = "Take TOPIK or an English test (IELTS is widely available), or tell us if you can sit the next TOPIK CBNU names.";
+    }
+    rows.push(lang);
+
+    // Funds
+    var needAmt = NEED[a.level], amt = parseFloat(a.amount), f = { key: "Funds", note: "", action: "" };
+    if (a.holder === "scholar") {
+      f.st = "action"; f.detail = "With an institutional or embassy scholarship you hand in the sponsor's confirmation of support instead of a bank balance.";
+      f.note = "The letter must state your name and the total amount.";
+      f.action = "Get the sponsor's confirmation letter with your name and the total amount.";
+    } else if (a.holder === "none") {
+      f.st = "fail"; f.detail = "You need " + won(needAmt) + " in an account before CBNU can issue the Certificate of Admission for your visa.";
+      f.action = "Arrange " + won(needAmt) + " in an account in your own or your parents' name.";
+    } else if (a.holder === "other") {
+      f.st = "fail"; f.detail = "The account must be in your name or your parents' name. A third party's account is not accepted.";
+      f.action = "Use an account in your own or your parents' name.";
+    } else if (a.inkorea === "yes" && a.holder === "parents") {
+      f.st = "fail"; f.detail = "Applicants who are already in Korea on a visa must use a Korean bank account in their own name.";
+      f.action = "Open or use a Korean account in your own name.";
+    } else if (amt >= needAmt) {
+      f.st = "ok"; f.detail = "Your balance of " + won(amt) + " is above the " + won(needAmt) + " required.";
+      f.note = "For the visa you will also need bank statement history, with the money kept in the account for at least 1 month before the visa application. Statements must be issued within 2 weeks of that application.";
+    } else {
+      f.st = "fail"; f.detail = "Your balance of " + won(amt) + " is " + won(needAmt - amt) + " short of the " + won(needAmt) + " required.";
+      f.action = "Raise the balance by " + won(needAmt - amt) + " and keep it in the account.";
+    }
+    rows.push(f);
+
+    // Documents (never changes the verdict)
+    var have = a.docs || [], missing = DOCS.filter(function (d) { return have.indexOf(d.k) < 0; });
+    var docRow = { key: "Documents" };
+    if (!missing.length) {
+      docRow.st = "ok"; docRow.detail = "All 7 documents are ready."; docRow.note = "Check the issue dates: academic documents within 6 months, nationality documents within 3 months of your application date.";
+    } else {
+      docRow.st = "action";
+      var certName = (DOC_TEXT[a.edu] || DOC_TEXT.none);
+      docRow.detail = have.length + " of 7 ready. Still to arrange: " + missing.map(function (d) {
+        var n = d.k === "cert" ? certName.cert[0] : (d.k === "transcript" ? certName.tr[0] : d.t);
+        // Lower-case the first letter only for ordinary words, so acronyms such as MOFA, IELTS, TOPIK and TOEFL keep their capitals.
+        return /^[A-Z][A-Z]/.test(n) ? n : n.charAt(0).toLowerCase() + n.slice(1);
+      }).join("; ") + ".";
+      docRow.note = "Apostilles take a long time, so start them first.";
+      docRow.action = "Start the missing documents now, beginning with the apostille.";
+    }
+    rows.push(docRow);
+
+    // Fee waiver note, only for the two programs that offer one.
+    // Figures from CBNU's Spring 2027 guidelines: graduate "Scholarship, 1. English Track" (new students)
+    // and undergraduate "Scholarship for Undergraduate" (freshmen).
+    if (a.program) {
+      var fw = { key: "Fee waiver", st: "info", label: "Good to know", note: "Decided by CBNU. 2027 fees are not final." };
+      if (a.level === "master") {
+        fw.detail = "For new international students on the English track, CBNU's fee waiver is about 80% off tuition, per semester, with IELTS 7.0, TOEFL iBT 95 or New TEPS 427; about 40% with IELTS 6.5, TOEFL iBT 80 or New TEPS 347; and about 15% for every other new student on the English track.";
+        var WAIVER_ENG = { ielts: [7, 6.5], ibt: [95, 80], nteps: [427, 347] };
+        var ws = parseFloat(a.engscore), wt = WAIVER_ENG[a.engtest];
+        if (wt && !isNaN(ws)) {
+          fw.detail += " Your " + ENG[a.engtest].label + " " + ws + (ws >= wt[0] ? " is in the about 80% band." : (ws >= wt[1] ? " is in the about 40% band." : " is below the about 40% band."));
+        } else {
+          fw.detail += " Only IELTS, TOEFL iBT and New TEPS scores count for the top two bands, and your answers include none of them.";
+        }
+      } else {
+        fw.detail = "For new international students, CBNU's Bachelor's fee waiver is based on TOPIK, not on an English score: about 70% off tuition, per semester, with TOPIK Level 5; about 40% with TOPIK Level 4; and about 20% with TOPIK Level 3.";
+        var wk = parseInt(a.topik, 10);
+        if (wk >= 5) fw.detail += " Your TOPIK Level " + wk + " is in the about 70% band.";
+        else if (wk === 4) fw.detail += " Your TOPIK Level 4 is in the about 40% band.";
+        else if (wk === 3) fw.detail += " Your TOPIK Level 3 is in the about 20% band.";
+        else if (wk > 0) fw.detail += " Your TOPIK Level " + wk + " is below Level 3, the lowest band.";
+        else fw.detail += " You have no TOPIK result, so you are not in a waiver band yet. An English score does not count for this waiver.";
+      }
+      rows.push(fw);
+    }
+
+    // Timing
+    var now = new Date(), t = { key: "Timing", st: "info", note: "" };
+    var allDocs = !missing.length;
+    if (now <= D.r1Online) {
+      var d1 = days(D.r1Online - now);
+      if (allDocs) {
+        t.detail = "Round 1 is open for " + d1 + " more day" + (d1 > 1 ? "s" : "") + " (online by " + dateText(D.r1Online) + ", documents at CBNU by " + dateText(D.r1Originals) + ").";
+        t.note = "This is tight. Contact KoUni today.";
+      } else {
+        t.detail = "Round 1 closes in " + d1 + " day" + (d1 > 1 ? "s" : "") + " and documents are due by " + dateText(D.r1Originals) + ". With documents still to prepare, aim for Round 2: apply online from " + dateText(D.r2Open) + " to " + dateText(D.r2) + ", with documents at CBNU by " + dateText(D.r2) + ".";
+      }
+    } else if (now <= D.r2) {
+      var d2 = days(D.r2 - now);
+      t.detail = now < D.r2Open
+        ? "Round 2 opens on " + dateText(D.r2Open) + " and closes on " + dateText(D.r2) + " (documents due the same day)."
+        : "Round 2 closes on " + dateText(D.r2) + ", in " + d2 + " day" + (d2 > 1 ? "s" : "") + ". Documents must be at CBNU by the same date.";
+      if (!allDocs) t.note = "Start your missing documents now so they arrive in time.";
+    } else {
+      t.detail = "Both Spring 2027 rounds have closed. Ask KoUni about the next intake.";
+    }
+    rows.push(t);
+
+    var core = rows.slice(0, 3), fail = core.some(function (r) { return r.st === "fail"; }), action = core.some(function (r) { return r.st === "action"; });
+    var state = fail ? "fail" : (action ? "action" : "ok");
+    return { rows: rows, state: state };
+  }
+
+  var STATUS_TEXT = { ok: "Met", action: "Needs action", fail: "Not met", info: "Dates" };
+  var VERDICT = {
+    ok: { h: "You are eligible to apply", p: "On your answers, you meet CBNU's language, education and funds requirements for Spring 2027. KoUni will confirm this against your documents. Admission itself is decided only by CBNU." },
+    action: { h: "You can apply, with a few conditions", p: "You meet the core requirements, with conditions. See each item below. Admission itself is decided only by CBNU." },
+    fail: { h: "Not eligible yet", p: "One or more requirements are not met on your answers. The list below shows what to fix. Once you have, check again or message KoUni." }
+  };
+
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
+
+  function render(a, res) {
+    var box = $("result");
+    box.innerHTML = "";
+    var v = el("div", "verdict"); v.setAttribute("data-state", res.state);
+    v.appendChild(el("h2", "", VERDICT[res.state].h));
+    v.appendChild(el("p", "", VERDICT[res.state].p));
+    box.appendChild(v);
+
+    box.appendChild(el("h3", "sub", "Requirement by requirement"));
+    var ol = el("ol", "ledger");
+    res.rows.forEach(function (r) {
+      var li = el("li");
+      li.appendChild(el("div", "what", r.key));
+      var c = el("div");
+      c.appendChild(el("span", "status " + r.st, r.label || STATUS_TEXT[r.st]));
+      c.appendChild(el("p", "", r.detail));
+      if (r.note) c.appendChild(el("p", "note", r.note));
+      li.appendChild(c); ol.appendChild(li);
+    });
+    box.appendChild(ol);
+
+    var todo = res.rows.filter(function (r) { return r.action; });
+    if (todo.length) {
+      box.appendChild(el("h3", "sub", "What to do next"));
+      var ul = el("ol", "steps");
+      todo.forEach(function (r) { ul.appendChild(el("li", "", r.action)); });
+      box.appendChild(ul);
+    }
+
+    var lines = [
+      "KoUni eligibility check, CBNU Spring 2027",
+      "Name: " + a.name, "Citizenship: " + a.country, "Phone/WhatsApp: " + a.phone,
+      a.email ? "Email: " + a.email : "",
+      "Program: " + LEVEL_NAME[a.level] + ". Education: " + EDU[a.edu].label + ". In Korea now: " + (a.inkorea === "yes" ? "yes" : "no"),
+      "Result: " + VERDICT[res.state].h, ""
+    ].filter(function (x, i) { return x !== "" || i > 5; });
+    res.rows.forEach(function (r) { lines.push(r.key + " (" + STATUS_TEXT[r.st] + "): " + r.detail); });
+    lastSummary = lines.join("\n");
+
+    var first = null;
+    if (res.state === "ok") {
+      first = "I'm eligible";
+    } else if (res.state === "action") {
+      var conds = res.rows.slice(0, 3).filter(function (r) { return r.st === "action"; }).map(function (r) { return r.key.toLowerCase(); });
+      first = "I'm eligible, with conditions on: " + conds.join(", ");
+    }
+    var acts = el("div", "actions");
+    if (first) {
+      box.appendChild(el("h3", "sub", "Next step: send this message to KoUni"));
+      var pm = el("p", "", "Copy the message below and send it to KoUni's Instagram page" + (CONTACT.instagram ? " (@" + CONTACT.instagram + ")" : "") + ". You can edit it first if anything is wrong. KoUni will reply and tell you what happens next.");
+      pm.style.maxWidth = "56ch"; box.appendChild(pm);
+      var ta = el("textarea", "msgarea"); ta.value = buildMessage(a, first); ta.rows = 13;
+      ta.setAttribute("aria-label", "Message to send to KoUni");
+      box.appendChild(ta);
+      if (CONTACT.instagram) {
+        var ig = el("a", "btn", "Open KoUni on Instagram");
+        ig.href = "https://ig.me/m/" + encodeURIComponent(CONTACT.instagram);
+        ig.target = "_blank"; ig.rel = "noopener"; acts.appendChild(ig);
+      }
+      var cm = el("button", "btn" + (CONTACT.instagram ? " ghost" : ""), "Copy message"); cm.type = "button";
+      cm.addEventListener("click", function () { copyText(ta.value, cm, "Copy message"); });
+      acts.appendChild(cm);
+    } else {
+      box.appendChild(el("h3", "sub", "Next step: fix what is not met"));
+      box.appendChild(el("p", "hint", "Once these are sorted, check again. When you meet the requirements, you will see the message to send to KoUni."));
+    }
+    var pr = el("button", "btn ghost", "Print or save as PDF"); pr.type = "button";
+    pr.addEventListener("click", function () { window.print(); });
+    acts.appendChild(pr);
+    var re = el("button", "btn ghost", "Change my answers"); re.type = "button";
+    re.addEventListener("click", function () { $("name").scrollIntoView(); $("name").focus(); });
+    acts.appendChild(re);
+    box.appendChild(acts);
+
+    box.appendChild(el("p", "fine", "This is a preliminary check against CBNU's Spring 2027 guidelines. It is not an admission decision and does not guarantee admission, a scholarship, a fee waiver or a visa. CBNU and the Korean immigration authorities decide those. Rules and dates can change."));
+
+    box.hidden = false;
+    // Size the message box to its content so every line is visible without scrolling.
+    var mt = box.querySelector("textarea.msgarea");
+    if (mt) {
+      var fit = function () { mt.style.height = "auto"; mt.style.height = (mt.scrollHeight + 4) + "px"; };
+      fit(); mt.addEventListener("input", fit); window.addEventListener("resize", fit);
+    }
+    box.scrollIntoView();
+    box.focus({ preventScroll: true });
+  }
+
+  function copyText(text, btn, label) {
+    function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = label; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
+
+  function readAnswers() {
+    var docs = [].slice.call(form.querySelectorAll("input[name=doc]:checked")).map(function (c) { return c.value; });
+    return {
+      name: $("name").value.trim(), country: $("country").value.trim(), phone: $("phone").value.trim(), email: $("email").value.trim(),
+      inkorea: $("inkorea").value, dob: $("dob").value, degree: $("degree").value.trim(), program: $("program").value, level: $("level").value, edu: $("edu").value,
+      topik: $("topik").value, klp: $("klp").value, engtest: $("engtest").value, engscore: $("engscore").value, cefr: $("engcefr").value,
+      plantopik: $("plantopik").checked,
+      holder: $("holder").value, amount: $("amount").value, docs: docs
+    };
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (!validate()) return;
+    var a = readAnswers();
+    var res = evaluate(a);
+    render(a, res);
+    saveResult(a, res);
+  });
+
+  // Sends the answers to SAVE.url: a "partial" snapshot after changes (debounced, and on leaving the page)
+  // and a "result" snapshot when the check is run. Does nothing when SAVE.url is empty.
+  // Never delays or changes what the applicant sees; failures are ignored.
+  var SESSION_ID = (function () {
+    try {
+      var b = new Uint8Array(8); window.crypto.getRandomValues(b);
+      return Array.prototype.map.call(b, function (x) { return ("0" + x.toString(16)).slice(-2); }).join("");
+    } catch (e) { return (Date.now().toString(16) + Math.random().toString(16).slice(2)).slice(0, 16); }
+  })();
+  var RESULT_KEY = { ok: "eligible", action: "eligible_with_conditions", fail: "not_eligible" };
+  var MAX_SENDS = 40, sends = 0, lastSentKey = "", dirty = false, debounceTimer = null;
+  function selectedText(id) { var el = $(id); return el.selectedIndex >= 0 && el.value !== "" ? el.options[el.selectedIndex].text : ""; }
+  // A select counts as filled once it differs from the value it had when the page loaded.
+  var INITIAL = {};
+  [].slice.call(form.querySelectorAll("select")).forEach(function (el) { INITIAL[el.id] = el.value; });
+  function fieldStats() {
+    var els = [].slice.call(form.querySelectorAll("input, select, textarea")), filled = 0;
+    els.forEach(function (el) {
+      if (el.type === "checkbox") { if (el.checked) filled++; }
+      else if (el.tagName === "SELECT") { if (el.value !== "" && el.value !== INITIAL[el.id]) filled++; }
+      else if (el.value.trim() !== "") filled++;
+    });
+    return { filled: filled, total: els.length };
+  }
+  function buildPayload(a, stage, res) {
+    var listed = res ? res.rows.filter(function (r, i) { return (i < 3 && (r.st === "fail" || r.st === "action")) || (r.key === "Documents" && r.st === "action"); })
+      .map(function (r) { return r.key + ": " + r.detail; }).join(" | ") : "";
+    var docs = a.docs || [], num = function (v) { return v === "" || isNaN(parseFloat(v)) ? "" : parseFloat(v); };
+    var st = fieldStats();
+    return {
+      id: SESSION_ID, sent_at: new Date().toISOString(), stage: stage, filled: st.filled, total_fields: st.total,
+      result: res ? RESULT_KEY[res.state] : "", conditions_or_missing: listed,
+      name: a.name, citizenship: a.country, date_of_birth: a.dob, phone: a.phone, email: a.email,
+      in_korea: a.inkorea === "yes", level: LEVEL_NAME[a.level] || "", education: EDU[a.edu] ? EDU[a.edu].label : "",
+      degree_name: a.degree, department: DEPT[a.program] || "", topik_level: parseInt(a.topik, 10) || 0, klp_level: parseInt(a.klp, 10) || 0,
+      english_test: a.engtest === "cefr" ? "CEFR" : (a.engtest ? ENG[a.engtest].label : ""),
+      english_score: a.engtest === "cefr" ? a.cefr : (a.engtest ? num(a.engscore) : ""),
+      topik_planned: !!a.plantopik, account_holder: selectedText("holder"),
+      balance_krw: $("amount-wrap").hidden ? "" : num(a.amount),
+      doc_passport: docs.indexOf("passport") > -1, doc_certificate: docs.indexOf("cert") > -1, doc_transcript: docs.indexOf("transcript") > -1,
+      doc_apostille: docs.indexOf("apostille") > -1, doc_family: docs.indexOf("family") > -1, doc_language_report: docs.indexOf("langcert") > -1,
+      doc_bank: docs.indexOf("bank") > -1,
+      page_version: PAGE_VERSION
+    };
+  }
+  function snapshotKey(p) {
+    var c = {}; for (var k in p) if (k !== "sent_at" && k !== "stage" && k !== "result" && k !== "conditions_or_missing") c[k] = p[k];
+    return JSON.stringify(c);
+  }
+  function send(payload, useBeacon) {
+    if (!SAVE.url || sends >= MAX_SENDS) return;
+    sends++;
+    try {
+      var body = JSON.stringify(payload);
+      if (useBeacon && navigator.sendBeacon) {
+        navigator.sendBeacon(SAVE.url, new Blob([body], { type: "text/plain;charset=utf-8" }));
+      } else {
+        var p = fetch(SAVE.url, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body });
+        if (p && p.catch) p.catch(function () {});
+      }
+    } catch (e) {}
+  }
+  function sendPartial(useBeacon) {
+    try {
+      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+      if (!SAVE.url || !dirty) return;
+      dirty = false;
+      var payload = buildPayload(readAnswers(), "partial", null);
+      if (payload.filled < 1) return;
+      var key = snapshotKey(payload);
+      if (key === lastSentKey) return;
+      lastSentKey = key;
+      send(payload, useBeacon);
+    } catch (e) {}
+  }
+  function saveResult(a, res) {
+    if (!SAVE.url) return;
+    try {
+      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+      dirty = false;
+      var payload = buildPayload(a, "result", res);
+      lastSentKey = snapshotKey(payload);
+      send(payload, false);
+    } catch (e) {}
+  }
+  function startPartialSaving() {
+    if (!SAVE.url) return;
+    var onChange = function () {
+      dirty = true;
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function () { sendPartial(false); }, 4000);
+    };
+    form.addEventListener("input", onChange);
+    form.addEventListener("change", onChange);
+    document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") sendPartial(true); });
+    window.addEventListener("pagehide", function () { sendPartial(true); });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", startPartialSaving);
+  else startPartialSaving();
+
+  // Exposed for testing only.
+  window.__kouni = { evaluate: evaluate, readAnswers: readAnswers };
+})();
+</script>
+</body>
+</html>
