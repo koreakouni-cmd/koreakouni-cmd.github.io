@@ -178,6 +178,10 @@
           <label for="email">Email <span class="opt">(optional)</span></label>
           <input id="email" type="email" autocomplete="email">
         </div>
+        <div class="field">
+          <label for="refcode">Reference code <span class="opt">(optional)</span></label>
+          <input id="refcode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="20" placeholder="If someone gave you a code">
+        </div>
       </div>
       <div class="field" style="margin-top:1rem">
         <label for="inkorea">Are you in Korea now on a valid visa?</label>
@@ -337,7 +341,7 @@
 (function () {
   var CONTACT = { instagram: "_ko.uni_" };
   var SAVE = { url: "https://script.google.com/macros/s/AKfycbwRdi7IFyZmFqoerWLSUrHh4DeTtco-rjHtR-nVBxPtK6s9NObBcUwqZfOihSra2DtePw/exec" };
-  var PAGE_VERSION = "2026-11-22";
+  var PAGE_VERSION = "2026-11-24";
 
   var KST = "+09:00";
   var D = {
@@ -454,7 +458,7 @@
       "Are your documents attested and apostilled by MOFA? " + ((a.docs || []).indexOf("apostille") > -1 ? "Yes" : "No"),
       "Do you have enough amount in your bank? " + enough,
       "Do you have IELTS/TOPIK? Score? " + languageLine(a)
-    ].join("\n");
+    ].concat(a.ref ? ["Reference code: " + a.ref] : []).join("\n");
   }
 
   function won(n) { return "KRW " + Math.round(n).toLocaleString("en-US"); }
@@ -773,9 +777,19 @@
       inkorea: $("inkorea").value, dob: $("dob").value, degree: $("degree").value.trim(), program: $("program").value, level: $("level").value, edu: $("edu").value,
       topik: $("topik").value, klp: $("klp").value, engtest: $("engtest").value, engscore: $("engscore").value, cefr: $("engcefr").value,
       plantopik: $("plantopik").checked,
-      holder: $("holder").value, amount: $("amount").value, docs: docs
+      holder: $("holder").value, amount: $("amount").value, docs: docs,
+      ref: cleanRef($("refcode").value)
     };
   }
+
+  // Reference codes: letters, digits and hyphens only, upper case, at most 20 characters.
+  function cleanRef(v) { return String(v || "").toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 20); }
+  // A link such as ?ref=ARF500 fills in the code; the applicant can still change it.
+  try {
+    var refParam = new URLSearchParams(window.location.search).get("ref");
+    if (refParam && !$("refcode").value) $("refcode").value = cleanRef(refParam);
+  } catch (e) {}
+  $("refcode").addEventListener("blur", function () { this.value = cleanRef(this.value); });
 
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
@@ -828,7 +842,7 @@
       doc_passport: docs.indexOf("passport") > -1, doc_certificate: docs.indexOf("cert") > -1, doc_transcript: docs.indexOf("transcript") > -1,
       doc_apostille: docs.indexOf("apostille") > -1, doc_family: docs.indexOf("family") > -1, doc_language_report: docs.indexOf("langcert") > -1,
       doc_bank: docs.indexOf("bank") > -1,
-      page_version: PAGE_VERSION
+      page_version: PAGE_VERSION, reference_code: a.ref || ""
     };
   }
   function snapshotKey(p) {
