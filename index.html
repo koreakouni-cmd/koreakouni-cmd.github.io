@@ -341,7 +341,7 @@
 (function () {
   var CONTACT = { instagram: "_ko.uni_" };
   var SAVE = { url: "https://script.google.com/macros/s/AKfycbwRdi7IFyZmFqoerWLSUrHh4DeTtco-rjHtR-nVBxPtK6s9NObBcUwqZfOihSra2DtePw/exec" };
-  var PAGE_VERSION = "2026-11-24";
+  var PAGE_VERSION = "2026-11-25";
 
   var KST = "+09:00";
   var D = {
@@ -784,11 +784,6 @@
 
   // Reference codes: letters, digits and hyphens only, upper case, at most 20 characters.
   function cleanRef(v) { return String(v || "").toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 20); }
-  // A link such as ?ref=ARF500 fills in the code; the applicant can still change it.
-  try {
-    var refParam = new URLSearchParams(window.location.search).get("ref");
-    if (refParam && !$("refcode").value) $("refcode").value = cleanRef(refParam);
-  } catch (e) {}
   $("refcode").addEventListener("blur", function () { this.value = cleanRef(this.value); });
 
   form.addEventListener("submit", function (ev) {
